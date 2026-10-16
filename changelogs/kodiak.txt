@@ -10,16 +10,9 @@ Notes:
 
 Device changes:
 ==============================
-- allow hal_power_server sysfs_batteryinfo access for priority charging
-- patch system/memory/lmkd to handle in-kernel LMK without aborting
-- manage vendor_kernel_boot in kodiak-images to avoid Soong denylist
-- integrate Espada kernel with stock GKI fallback
-- optional hook for a maintainer's private extras
-- README: link the vendor blob repo
-- README: user variant, generic setup paths, current vendor layout
-- drop non-essential Google apps from the blob list
-- put the boot/system patch levels in the top-level vbmeta
-- Add AICore, PixelSense, PixelAI, Hotword, NowPlaying, and Camera/Satellite priv-apps
+- add PixelWifiOverlay2026 for connected MAC randomization and Wi-Fi parity
+- restore adaptive charging, satellite client, eSIM MEP, and Pixel feature overlays
+- feat(kodiak): restore Pixel feature apps in proprietary-files.txt
 
 ROM changes since the last build:
 ==============================
