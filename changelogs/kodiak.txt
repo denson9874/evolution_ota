@@ -1,0 +1,34 @@
+Evolution X 12.3 (Android 17) for the Pixel 11 Pro XL (kodiak), build 20261016
+Security patch: 2026-10-01 (system), 2026-10-05 (vendor). Stock Pixel firmware CD1A.261005.003.
+
+Notes:
+==============================
+- The update includes the stock Pixel firmware CD1A.261005.003 (bootloader and radio).
+- Rooted? Before rebooting, install Magisk (or KernelSU) to the inactive slot, or root is gone after the update.
+- Kernel: Espada v3 (Linux 6.12.92) by Kevtrejo37 (CASS scheduler, Simple LMK, GrapheneOS zram fix; source: https://github.com/atrejokm301/espada-kernel).
+- First installs need a computer: see https://xdaforums.com/t/4804712/
+
+Device changes:
+==============================
+- allow hal_power_server sysfs_batteryinfo access for priority charging
+- patch system/memory/lmkd to handle in-kernel LMK without aborting
+- manage vendor_kernel_boot in kodiak-images to avoid Soong denylist
+- integrate Espada kernel with stock GKI fallback
+- optional hook for a maintainer's private extras
+- README: link the vendor blob repo
+- README: user variant, generic setup paths, current vendor layout
+- drop non-essential Google apps from the blob list
+- put the boot/system patch levels in the top-level vbmeta
+- Add AICore, PixelSense, PixelAI, Hotword, NowPlaying, and Camera/Satellite priv-apps
+
+ROM changes since the last build:
+==============================
+frameworks/base (4 commits)
+    e71a8803fa Extreme Charging: implement Bodega mode controller and QS tile
+    959cff5be0 Typeface: give the default typefaces their own copy of the chosen font
+    a302849962 SystemUI: serve battery data to Google's charging screensaver
+    a5a7c8c700 SystemUI: hold AOD at the dimmed brightness until it has animated in
+system/memory/lmkd (1 commits)
+    225f8b6 lmkd: skip LMK_START_MONITORING when using in-kernel interface; safely destruct Reaper
+vendor/gms (1 commits)
+    d63c25d gms: add Dreamliner for the Pixel 11 series
