@@ -1,0 +1,35 @@
+Evolution X 12.3 (Android 17) for the Pixel 11 Pro Fold (yogi), build 20261016
+Security patch: 2026-10-01 (system), 2026-10-05 (vendor). Stock Pixel firmware CD1A.261005.003.
+
+Notes:
+==============================
+- Untested: this build has never been booted on a Pixel 11 Pro Fold. If it doesn't boot, the phone goes back to the build you had.
+- The update includes the stock Pixel firmware CD1A.261005.003 (bootloader and radio).
+- Rooted? Before rebooting, install Magisk (or KernelSU) to the inactive slot, or root is gone after the update.
+- Kernel: stock Google GKI (Linux 6.12).
+- First installs need a computer: see https://xdaforums.com/t/4804826/
+
+Device changes:
+==============================
+- allow hal_power_server sysfs_batteryinfo access for priority charging
+- get over-the-air updates from this tree's own OTA repo
+- ship Google's charging screensaver
+- apply-patches: don't misdetect applied patches near the top of the log
+- fix the charging screensaver's battery level and digits
+- hold AOD at the dimmed brightness until it has animated in
+- let RisingOS builds through the artifact-path check
+- README: list the frameworks/base patches
+- HiLight settings page; keep Play services from preparing Google OTAs
+- let Private Compute Core components use the TPU, as stock does
+
+ROM changes since the last build:
+==============================
+frameworks/base (4 commits)
+    e71a8803fa Extreme Charging: implement Bodega mode controller and QS tile
+    959cff5be0 Typeface: give the default typefaces their own copy of the chosen font
+    a302849962 SystemUI: serve battery data to Google's charging screensaver
+    a5a7c8c700 SystemUI: hold AOD at the dimmed brightness until it has animated in
+system/memory/lmkd (1 commits)
+    225f8b6 lmkd: skip LMK_START_MONITORING when using in-kernel interface; safely destruct Reaper
+vendor/gms (1 commits)
+    d63c25d gms: add Dreamliner for the Pixel 11 series
