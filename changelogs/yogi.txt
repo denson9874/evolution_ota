@@ -11,25 +11,11 @@ Notes:
 
 Device changes:
 ==============================
-- allow hal_power_server sysfs_batteryinfo access for priority charging
-- get over-the-air updates from this tree's own OTA repo
-- ship Google's charging screensaver
-- apply-patches: don't misdetect applied patches near the top of the log
-- fix the charging screensaver's battery level and digits
-- hold AOD at the dimmed brightness until it has animated in
-- let RisingOS builds through the artifact-path check
-- README: list the frameworks/base patches
-- HiLight settings page; keep Play services from preparing Google OTAs
-- let Private Compute Core components use the TPU, as stock does
+- add system_memory_lmkd patch for Simple LMK stability
+- add PixelWifiOverlay2026 for connected MAC randomization and Wi-Fi parity
+- restore adaptive charging, satellite client, eSIM MEP, and Pixel feature overlays
+- feat(yogi): restore Pixel feature apps in proprietary-files.txt
 
 ROM changes since the last build:
 ==============================
-frameworks/base (4 commits)
-    e71a8803fa Extreme Charging: implement Bodega mode controller and QS tile
-    959cff5be0 Typeface: give the default typefaces their own copy of the chosen font
-    a302849962 SystemUI: serve battery data to Google's charging screensaver
-    a5a7c8c700 SystemUI: hold AOD at the dimmed brightness until it has animated in
-system/memory/lmkd (1 commits)
-    225f8b6 lmkd: skip LMK_START_MONITORING when using in-kernel interface; safely destruct Reaper
-vendor/gms (1 commits)
-    d63c25d gms: add Dreamliner for the Pixel 11 series
+None recorded
