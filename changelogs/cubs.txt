@@ -1,9 +1,8 @@
-Evolution X 12.3 (Android 17) for the Pixel 11 (cubs), build 20261016
+Evolution X 12.3 (Android 17) for the Pixel 11 (cubs), build 20261018
 Security patch: 2026-10-01 (system), 2026-10-05 (vendor). Stock Pixel firmware CD1A.261005.003.
 
 Notes:
 ==============================
-- Untested: this build has never been booted on a Pixel 11. If it doesn't boot, the phone goes back to the build you had.
 - The update includes the stock Pixel firmware CD1A.261005.003 (bootloader and radio).
 - Rooted? Before rebooting, install Magisk (or KernelSU) to the inactive slot, or root is gone after the update.
 - Kernel: Espada v3 (Linux 6.12.92) by Kevtrejo37 (CASS scheduler, Simple LMK, GrapheneOS zram fix; source: https://github.com/atrejokm301/espada-kernel).
@@ -11,11 +10,139 @@ Notes:
 
 Device changes:
 ==============================
-- add system_memory_lmkd patch for Simple LMK stability
-- add PixelWifiOverlay2026 for connected MAC randomization and Wi-Fi parity
-- restore adaptive charging, satellite client, eSIM MEP, and Pixel feature overlays
-- feat(cubs): restore Pixel feature apps in proprietary-files.txt
+- drop nowplaying_app_26q1.xml from proprietary files (vendor/gms ships it)
 
 ROM changes since the last build:
 ==============================
-None recorded
+bionic (1 commits)
+    299a83f bionic: ifaddrs: don't require inet sockets for name/flag resolution
+build/make (1 commits)
+    a5d6754890 build: Fix setting PLATFORM_SECURITY_PATCH_TIMESTAMP w/uutils
+build/soong (1 commits)
+    1ac47f8 check_boot_jars: Add camera packages to the whitelist
+evolution/OTA (1 commits)
+    3885ccf Marble: 10/10/2026 Update
+evolution/manifest (1 commits)
+    bc6d0f9 manifest: Restore legacy msm8996 repositories
+external/chromium-webview/patches (1 commits)
+    3847f83 Update Chromium Webview to 155.0.8059.39
+external/chromium-webview/prebuilt/arm (1 commits)
+    170e899 Update Chromium Webview arm to 155.0.8059.39
+external/chromium-webview/prebuilt/arm64 (1 commits)
+    604ad4c Update Chromium Webview arm64 to 155.0.8059.39
+external/chromium-webview/prebuilt/x86 (1 commits)
+    2ca10d7 Update Chromium Webview x86 to 155.0.8059.39
+external/chromium-webview/prebuilt/x86_64 (1 commits)
+    de57895 Update Chromium Webview x86_64 to 155.0.8059.39
+external/setupcompat (1 commits)
+    15f79d6 partnerconfig: Better report partner configs that are not resolved
+frameworks/av (1 commits)
+    8e6f34b Effects: Do not allow DAP_OFFLOAD effect to be suspended
+frameworks/base (7 commits)
+    4a9ecbf939 Extreme Charging: implement Bodega mode controller and QS tile
+    66c892af85 Typeface: give the default typefaces their own copy of the chosen font
+    69b143bd6b SystemUI: serve battery data to Google's charging screensaver
+    629d93044a SystemUI: hold AOD at the dimmed brightness until it has animated in
+    95823c38b4 NotificationAttentionHelper: don't crash with favorites call lights on
+    689094fcdf SystemUI: don't start AOD brighter than the dimmed screen
+    aafcdbd042 Utils: Add toggleOverlay variant that raises overlay priority
+frameworks/libs/systemui (1 commits)
+    a545beb iconloaderlib: Do not wrap themed icons
+frameworks/native (1 commits)
+    4968769 dumpstate: Always include full dmesg in bugreports
+frameworks/opt/telephony (1 commits)
+    06469e7 telephony: Handle scan rejection and fall back to visible cell infos
+hardware/google/pixel-sepolicy (1 commits)
+    618c420 sepolicy: Ignore rango specific CP3A rules
+hardware/interfaces (1 commits)
+    d4f377e Integrate axfx support into AIDL audio
+hardware/lineage/compat (1 commits)
+    8331a85 compat: libaudioclient: Introduce AudioSystem shims
+hardware/lineage/generic-ims (1 commits)
+    6ef5620 carriersettings: Support device configuration overlays
+hardware/lineage/interfaces (1 commits)
+    a0f3ada power-libperfmgr: Preserve session state on thread updates
+hardware/qcom-caf/sm8450-6.6/audio/primary-hal (1 commits)
+    62783f8 audio-ar: Bump VINTF fragments to current
+hardware/qcom-caf/sm8450/audio/primary-hal (1 commits)
+    25c64ed hal: lvacfs: Convert input format to tinyalsa PCM IDs
+hardware/qcom-caf/sm8550/audio/agm (1 commits)
+    6651285 agm: Support sku agnostic acdb odm path
+hardware/qcom-caf/sm8550/audio/pal (1 commits)
+    c494968 pal: Add an option to prefer master gain for equal channel volumes
+hardware/qcom-caf/sm8550/audio/primary-hal (1 commits)
+    a674b23 hal/lvacfs: correctly pass input format
+lineage-sdk (1 commits)
+    a96a3b1 Introduce Shake Gestures feature [1/3]
+lineage/scripts (1 commits)
+    9e37043 pixel: Also update BuildSystemDesc
+packages/apps/Aperture (1 commits)
+    485c98d Automatic translation import
+packages/apps/AudioFX (1 commits)
+    2fc3a54 Automatic translation import
+packages/apps/Camelot (1 commits)
+    cdaa570 Automatic translation import
+packages/apps/Canvas (1 commits)
+    1a9b4ef Automatic translation import
+packages/apps/Catapult (1 commits)
+    95352d5 Automatic translation import
+packages/apps/DeskClock (1 commits)
+    85cde57 Automatic translation import
+packages/apps/Dialer (1 commits)
+    81ae9e3 Automatic translation import
+packages/apps/EmergencyInfo (1 commits)
+    fc80d69 EmergencyInfo: Fix choosing a photo without a crop activity
+packages/apps/EuiccPolicy (1 commits)
+    3b3c28e EuiccPolicy: Always enable EUICC packages
+packages/apps/EvoEgg (1 commits)
+    8a36dc7 EvoEgg: Use Evolution X logo as app icon
+packages/apps/Evolver (1 commits)
+    3cc4e12 Evolver: Rework spoofing UI with Material 3 Expressive
+packages/apps/ExactCalculator (1 commits)
+    933974f Automatic translation import
+packages/apps/FlipFlap (1 commits)
+    4866b33 Automatic translation import
+packages/apps/Glimpse (1 commits)
+    89b4735 Automatic translation import
+packages/apps/Jelly (1 commits)
+    64a74fb Automatic translation import
+packages/apps/Launcher3 (1 commits)
+    818f72b Automatic translation import
+packages/apps/LineageParts (1 commits)
+    12dd04f upgrading force full screen to compose
+packages/apps/Settings (1 commits)
+    b48cc876904 Settings: firmwareversion: convert Evolution X entries to Catalyst
+packages/apps/ThemePicker (1 commits)
+    32f081e Automatic translation import
+packages/apps/TvSettings (1 commits)
+    cfb054d Automatic translation import
+packages/apps/Twelve (1 commits)
+    fb82f3c Automatic translation import
+packages/apps/Updater (1 commits)
+    e0c3089 Updater: Remove the Evolution X version line from device info
+packages/inputmethods/LatinIME (1 commits)
+    e417ba6 Automatic translation import
+packages/modules/Bluetooth (1 commits)
+    eb0ba14 Bluetooth: Disable Bluetooth auto-on feature by default
+packages/resources/apps (1 commits)
+    91d835b New translations (#11)
+packages/resources/devicesettings (1 commits)
+    625deca Automatic translation import
+system/fs/fs_mgr (1 commits)
+    72063d7 fs_mgr: Allow remount on a locked device
+system/memory/lmkd (1 commits)
+    a788144 lmkd: skip LMK_START_MONITORING when using in-kernel interface; safely destruct Reaper
+system/update_engine (1 commits)
+    1ef2cbc update_engine: Grow recorded super size in recovery
+tools/extract-utils (1 commits)
+    78ba5d5 extract_utils: let patch_file() take python modules
+vendor/extras (1 commits)
+    7c4c522 extras: sdk: blur: checkout to crDroid upstream
+vendor/gms (1 commits)
+    d5490a1 gms: Update from grizzly CD1A.261005.003
+vendor/lineage (1 commits)
+    0767f6dd overlay: dps: update device config overrides
+vendor/qcom/opensource/commonsys/fm (1 commits)
+    9ec99f9 Automatic translation import
+vendor/unbundled_google/packages/SystemUIGoogle (1 commits)
+    d991962 SystemUIGoogle: ambientmusic: Add lyrics mode
