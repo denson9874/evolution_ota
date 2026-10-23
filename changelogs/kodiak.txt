@@ -1,4 +1,4 @@
-Evolution X 12.3 (Android 17) for the Pixel 11 Pro XL (kodiak), build 20261022
+Evolution X 12.3 (Android 17) for the Pixel 11 Pro XL (kodiak), build 20261023
 Security patch: 2026-10-01 (system), 2026-10-05 (vendor). Stock Pixel firmware CD1A.261005.003.
 
 Notes:
@@ -10,79 +10,22 @@ Notes:
 
 Device changes:
 ==============================
-- GPU acceleration for the Linux terminal, as stock
-- stock screenshot editor and Quick Share copy in SystemUI
-- ship FeliCa configs and PixelNfc
-- turn NFC on by default, as stock does
-- stock display and fingerprint framework values
-- let FrameworkResOverlayKodiak win over Evolution's overlays
-- carry patch 0008, a one-time heal for restored apps
-- ship CarrierWifi default permissions and the face feature XML
-- Night Light curve and Play Protect event consumer from stock
-- offer Google Photos in the photo picker
-- ship stock's PixelDisplayService RRO
-- show the temperature and USB port overheat warnings
-- ship stock libnfc-nci.conf
-- ship WfcActivation
-- re-sign CarrierSetup with our platform key
-- 0007: skip unresolved packages; correct the cause
-- carry a NetworkPolicy fix for apps cut off after installs
-- drop the bring-up TARGET_DISABLE_EPPE
-- take APNs from CarrierSettings, as stock does
-- add the EuiccSupportPixel secure element overlay
-- add a tethering overlay so USB tethering uses NCM
-- ship the mainline supplicant config overlays
-- ship EuiccGoogle, the eSIM LPA
-- patch vendor/gms to drop nowplaying.xml again (confirmed by a user's log)
-- Revert "kodiak: patch vendor/gms to drop nowplaying.xml (Now Playing can't turn on)"
-- patch vendor/gms to drop nowplaying.xml (Now Playing can't turn on)
+- give recovery and fastbootd stock's USB IDs
+- carry the Settings NFC payment screen fix from Evolution X
+- carry frameworks_base 0009 (App Lock Recents) and 0010 (island without blur)
+- add SettingsGoogleFutureFaceEnroll
 
 ROM changes since the last build:
 ==============================
-bionic (1 commits)
-    f8b37b8 custom_rom_hide: Do not spoof /data/local/tmp
-build/make (1 commits)
-    75f33f854b build: Fix setting PLATFORM_SECURITY_PATCH_TIMESTAMP w/uutils
-frameworks/base (9 commits)
-    c8f2bba826 NetworkPolicy: give restored apps their network access back once
-    c2868783cf NetworkPolicy: don't cut off apps that request INTERNET at PACKAGE_ADDED
-    d0753cec18 Extreme Charging: implement Bodega mode controller and QS tile
-    2bca8984e4 Typeface: give the default typefaces their own copy of the chosen font
-    b097571b00 SystemUI: serve battery data to Google's charging screensaver
-    bca397cd3e SystemUI: hold AOD at the dimmed brightness until it has animated in
-    a9a25aea0a NotificationAttentionHelper: don't crash with favorites call lights on
-    497e3bbcef SystemUI: don't start AOD brighter than the dimmed screen
-    ef71b32947 SystemUI: qs: center custom header clock styles
-hardware/qcom-caf/common (1 commits)
-    c7eda1f common: Update matrix to LA.QSSI.17.0.r1-11300-qssi.0
-hardware/qcom-caf/sm8250/display (1 commits)
-    1906af8 gralloc: Don't allocate UBWC for 8-bit legacy CamX outputs
-packages/apps/Canvas (1 commits)
-    52265a4 Canvas: Clip strokes to the image rect
-packages/apps/Evolver (1 commits)
-    700eb5e Evolver: rework spoofing, pickers and dialogs with M3 Expressive
-packages/apps/Launcher3 (1 commits)
-    5f26fe6 Launcher3: Check responsive specs from the display option spec
-packages/apps/LineageParts (1 commits)
-    aa7fc9d upgrading force full screen to compose
+frameworks/base (2 commits)
+    0961d89112 SystemUI: draw the Dynamic Bar island without backdrop blur
+    9873ee331d App Lock: keep locked apps out of Recents thumbnails
 packages/apps/Settings (1 commits)
-    5140bcc1836 Settings: AppLock: add inset focus ring to the RadioButtons
-packages/apps/SettingsIntelligence (1 commits)
-    cd1325f SettingsIntelligence: Disable search results item animations
-packages/apps/ThemePicker (1 commits)
-    2a9e576 ThemePicker: Remove minSdkVersion/targetSdkVersion
-system/memory/lmkd (1 commits)
-    4ca6d8b lmkd: skip LMK_START_MONITORING when using in-kernel interface; safely destruct Reaper
-vendor/gms (1 commits)
-    fc94da7 gms: don't install nowplaying.xml on the Pixel 11 series
-vendor/qcom/opensource/healthd-ext (1 commits)
-    9bdd090 healthd-ext: Bump AIDL HAL VINTF fragment to v5
-vendor/qcom/opensource/power (1 commits)
-    2a237fa power: Bump power HAL VINTF fragment to v7
-vendor/qcom/opensource/vibrator (1 commits)
-    97d88ab vibratorOL: Reject unsupported effects with effect stream
+    9f3ca8df647 Settings: Fix NFC payment settings activity
 
 Community Fixes & Enhancements:
-  - [Bug] Now Playing stuck at "Setting up Now Playing" and can't be turned on: vendor/gms nowplaying.xml blocked ASI from PCS ("association not allowed"); fixed (kodiak 0f60690, vendor/gms fc94da7) (Reported by Community report (video, logcat))
-  - [Bug] SystemUI crashed (back to lock screen) after FOD unlock / instant QS on the 10-18 kodiak build (`NoSuchMethodError IUdfpsRefreshRateRequestCallback.onRequestRate`): a stale AOSP SystemUI.apk in out/ shipped next to SystemUIGoogle. Removed; release-checks.sh now blocks stale apps (Reported by TG: Igor (+ Ashray V K))
-  - [Bug] At a Glance / Live Display sub-settings can't be disabled (master Home setting works). Ashray's logcat (2026-10-22) confirms same root cause as `ISS-20261019-01`: ASI's opt-in write to PCS (AstreaGrpcService) fails with "association not allowed" (vendor/gms nowplaying.xml); not a Launcher3 binding bug. fixed by kodiak 0f60690 / vendor/gms 1d69071 (Reported by XDA: xerel89 (Post #90782948) / TG: Christoph, Igor, Ashray V K (logs))
+  - [Bug] Flashing stuck at `< waiting for any device >` after rebooting into fastbootd: recovery/fastbootd run from our vendor_boot and had no ro.recovery.usb.* IDs (stock sets 18D1/D001/4EE0 in vendor/build.prop). Added on all four phones. Also check the fastboot driver / USB hub (Reported by XDA: xerel89 (Post #22))
+  - [Bug] Face unlock setup crashed Settings: the face enroll hand-off target com.google.android.settings.future.biometrics.faceenroll was missing (ActivityNotFoundException). Stock SettingsGoogleFutureFaceEnroll (system_ext priv-app, platform re-signed) added on all four phones (kodiak 9f35e0c, grizzly 7aa3484, cubs 6828376, yogi 3dbf16e). Enrollment itself not yet confirmed on a Pixel 11 (Reported by TG: Ashray V K (logs), Igor)
+  - [Bug] Micro-stutter while the Dynamic Bar island shows: its backdrop blur put a blur region in the status bar window, so SurfaceFlinger GPU-composited every app frame. frameworks_base 0010 draws the island without backdrop blur (cheetah 0/1190, husky 0/937 frames client-composited). Shipped in Evolution husky 20261023 (Reported by Daryl (cheetah), wife (husky))
+  - [Bug] Locked apps showed their content in Recents: Pixel Launcher doesn't know the sandbox App Lock and RecentTasks dropped isTopAppLocked's result. frameworks_base 0009 withholds snapshots of App-Locked apps, so Recents shows the lock placeholder (also while the app is unlocked). Shipped in Evolution husky 20261023. Replied to Ashray_Vk on XDA 2026-10-23 (post 90788959): fix explained, coming in the next P11 build (Reported by Daryl, XDA: Ashray_Vk (Post #90787566))
+  - [Bug] Settings > Connected devices > NFC > Contactless payments (and Wallet's default-payment link) opened a broken page: PaymentSettingsActivity pointed at the removed nfc.PaymentSettings fragment. Evolution X Settings 8b2dded5b421 (ExtremeXT) carried as patches/packages_apps_Settings/0001 (Reported by Release review (critic))
