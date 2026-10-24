@@ -10,20 +10,20 @@ Notes:
 
 Device changes:
 ==============================
-- give recovery and fastbootd stock's USB IDs
-- add SettingsGoogleFutureFaceEnroll
+- keep app odex on /system, not system_other
+- park ConnectivityThermalPowerManagerNextgen until a phone can test it
+- extract-files: depend on libprotobuf-cpp-lite by module name
+- ship stock's ConnectivityThermalPowerManagerNextgen
+- extract-images: keep the work directory off a small /tmp
 
 ROM changes since the last build:
 ==============================
-frameworks/base (2 commits)
-    0961d89112 SystemUI: draw the Dynamic Bar island without backdrop blur
-    9873ee331d App Lock: keep locked apps out of Recents thumbnails
-packages/apps/Settings (1 commits)
-    9f3ca8df647 Settings: Fix NFC payment settings activity
+frameworks/hardware/interfaces (1 commits)
+    f80da5a Implement android.frameworks.stats V3
+hardware/google/interfaces (1 commits)
+    17741d2 Implement com.google.hardware.pixel.display V22/V23
+packages/apps/LMOFreeform (1 commits)
+    61291e0 LMOFreeform: follow the display group's power state
 
 Community Fixes & Enhancements:
-  - [Bug] Flashing stuck at `< waiting for any device >` after rebooting into fastbootd: recovery/fastbootd run from our vendor_boot and had no ro.recovery.usb.* IDs (stock sets 18D1/D001/4EE0 in vendor/build.prop). Added on all four phones. Also check the fastboot driver / USB hub (Reported by XDA: xerel89 (Post #22))
-  - [Bug] Face unlock setup crashed Settings: the face enroll hand-off target com.google.android.settings.future.biometrics.faceenroll was missing (ActivityNotFoundException). Stock SettingsGoogleFutureFaceEnroll (system_ext priv-app, platform re-signed) added on all four phones (kodiak 9f35e0c, grizzly 7aa3484, cubs 6828376, yogi 3dbf16e). Enrollment itself not yet confirmed on a Pixel 11 (Reported by TG: Ashray V K (logs), Igor)
-  - [Bug] Micro-stutter while the Dynamic Bar island shows: its backdrop blur put a blur region in the status bar window, so SurfaceFlinger GPU-composited every app frame. frameworks_base 0010 draws the island without backdrop blur (cheetah 0/1190, husky 0/937 frames client-composited). Shipped in Evolution husky 20261023 (Reported by Daryl (cheetah), wife (husky))
-  - [Bug] Locked apps showed their content in Recents: Pixel Launcher doesn't know the sandbox App Lock and RecentTasks dropped isTopAppLocked's result. frameworks_base 0009 withholds snapshots of App-Locked apps, so Recents shows the lock placeholder (also while the app is unlocked). Shipped in Evolution husky 20261023. Replied to Ashray_Vk on XDA 2026-10-23 (post 90788959): fix explained, coming in the next P11 build (Reported by Daryl, XDA: Ashray_Vk (Post #90787566))
-  - [Bug] Settings > Connected devices > NFC > Contactless payments (and Wallet's default-payment link) opened a broken page: PaymentSettingsActivity pointed at the removed nfc.PaymentSettings fragment. Evolution X Settings 8b2dded5b421 (ExtremeXT) carried as patches/packages_apps_Settings/0001 (Reported by Release review (critic))
+  - [Bug] An open LMOFreeform floating window keeps telephony in screen-on mode while the phone sleeps (freeform display stays ON; DeviceStateMonitor mIsScreenOn=true, indication filter 127 vs 32 without it): modem keeps waking the AP. Reproduced with a control on the emulator. Fixed by kodiak patches/packages_apps_LMOFreeform/0001 (kodiak 86f8b25): the freeform display follows the display group's power state. Verified on the emulator 2026-10-24: screen off and unplugged with a floating window, display OFF, mIsScreenOn=false, low data expected, filter 32, same as with no window (P2) (Reported by Deep pass (emulator))
