@@ -6,7 +6,7 @@ Notes:
 - The update includes the stock Pixel firmware CP3A.261005.002.A1 (bootloader and radio).
 - Rooted? Before rebooting, install Magisk (or KernelSU) to the inactive slot, or root is gone after the update.
 - Kernel: Linux 6.1, Google's signed GKI with the Pixel 7 Pro's modules and device tree built from LineageOS's gs-6.1 kernel source.
-- First installs need a computer: see https://sourceforge.net/projects/denson9874-s-user-builds/files/cheetah/17/
+- First installs need a computer: see https://xdaforums.com/t/4806248/
 
 Device changes:
 ==============================
