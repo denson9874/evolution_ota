@@ -1,0 +1,19 @@
+Evolution X 12.3 (Android 17) for the Pixel 8 Pro (husky), build 20261024
+Security patch: 2026-10-01 (system), 2026-10-05 (vendor). Stock Pixel firmware CP3A.261005.005.
+
+Notes:
+==============================
+- The update includes the stock Pixel firmware CP3A.261005.005 (bootloader and radio).
+- Rooted? Before rebooting, install Magisk (or KernelSU) to the inactive slot, or root is gone after the update.
+- Kernel: Linux 6.1, Google's signed GKI with the Pixel 8 Pro's modules and device tree built from LineageOS's gs-6.1 kernel source.
+- First installs need a computer: see https://xdaforums.com/t/4805239/
+
+Device changes:
+==============================
+- shusky: Pin rust binaries to CP2A.260805.005
+
+ROM changes since the last build:
+==============================
+
+Community Fixes & Enhancements:
+  - [Bug] An open LMOFreeform floating window keeps telephony in screen-on mode while the phone sleeps (freeform display stays ON; DeviceStateMonitor mIsScreenOn=true, indication filter 127 vs 32 without it): modem keeps waking the AP. Reproduced with a control on the emulator. Fixed by kodiak patches/packages_apps_LMOFreeform/0001 (kodiak 86f8b25): the freeform display follows the display group's power state. Verified on the emulator 2026-10-24: screen off and unplugged with a floating window, display OFF, mIsScreenOn=false, low data expected, filter 32, same as with no window (P2) (Reported by Deep pass (emulator))
