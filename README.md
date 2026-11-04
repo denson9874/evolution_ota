@@ -1,20 +1,20 @@
 # evolution_ota
 
-Over-the-air update information for denson9874's unofficial Evolution X builds for the
-Pixel 11 series: kodiak (Pixel 11 Pro XL), grizzly (Pixel 11 Pro), cubs (Pixel 11) and
-yogi (Pixel 11 Pro Fold).
+**End of support (November 2026).** denson9874 no longer builds or supports Evolution X. The
+unofficial Evolution X builds this feed served, for cheetah (Pixel 7 Pro), husky (Pixel 8 Pro),
+cubs (Pixel 11), grizzly (Pixel 11 Pro), kodiak (Pixel 11 Pro XL) and yogi (Pixel 11 Pro Fold),
+are no longer maintained, and this repository is archived.
 
-The device trees ([kodiak](https://github.com/denson9874/device_google_kodiak) and its
-siblings) ship a runtime overlay that points Evolution X's Updater here instead of
-[Evolution-X/OTA](https://github.com/Evolution-X/OTA), which only lists official devices.
-The overlay is deleted if a device becomes official.
+The successor for all six phones is [ExpressiveOS](https://github.com/ExpressiveOS), denson9874's
+own ROM, built on LineageOS and AOSP. Install it with the
+[web installer](https://expressiveos-flash.daryldenson-apps.workers.dev). ExpressiveOS is signed
+with its own keys, so moving from Evolution X needs a clean install, which erases the phone: back
+up first. Help and release news: [Telegram](https://t.me/ExpressiveGroup).
 
-- `builds/<device>.json`: the latest build, in the Updater's format. The download is the
-  signed A/B OTA package on [SourceForge](https://sourceforge.net/projects/denson9874-s-user-builds/files/).
-- `changelogs/<device>.txt`: what changed in that build.
+What's left here:
 
-The release routine updates both after the OTA package has been uploaded. The Updater only
-installs packages signed with the builds' own release key.
+- `builds/<device>.json` holds `{"response": []}`, so the Updater on an old build reports that
+  there are no updates.
+- `changelogs/<device>.txt` holds the end-of-support notice with the links above.
 
-First installs still need a computer: unlock the bootloader and flash the fastboot zip as
-described in the XDA thread. After that, updates arrive over the air.
+The old build downloads are taken down.
