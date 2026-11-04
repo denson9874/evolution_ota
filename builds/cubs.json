@@ -1,24 +1,3 @@
 {
-  "response": [
-    {
-      "maintainer": "denson9874",
-      "currently_maintained": true,
-      "oem": "Google",
-      "device": "Pixel 11",
-      "filename": "EvolutionX-17.0-20261024-cubs-12.3-Unofficial-r2.zip",
-      "download": "https://ota-mirror.daryldenson-apps.workers.dev/cubs/17/EvolutionX-17.0-20261024-cubs-12.3-Unofficial-r2.zip",
-      "timestamp": 1792853117,
-      "md5": "120f9b2b194238f2630083aeb163a6c7",
-      "sha256": "db50cd2d3133545a46d370cd7c472b91423ded00119a7c59d5078454948eb473",
-      "size": 3579474321,
-      "version": "12.3",
-      "buildtype": "user",
-      "forum": "https://xdaforums.com/t/4804723/",
-      "firmware": "https://developers.google.com/android/images#cubs",
-      "paypal": "",
-      "github": "denson9874",
-      "initial_installation_images": [],
-      "extra_images": []
-    }
-  ]
+  "response": []
 }
